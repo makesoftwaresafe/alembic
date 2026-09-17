@@ -97,7 +97,7 @@ class PolyNormalsTest(unittest.TestCase):
         # reading test
         MayaCmds.AbcImport(self.__files[-1], mode='open', debug=False)
         # make sure the noNormal attribute is set correctly when the file is loaded
-        self.failIf(MayaCmds.listAttr('polyCubeShape').count('noNormals') != 0)
+        self.assertFalse(MayaCmds.listAttr('polyCubeShape').count('noNormals') != 0)
         self.failUnless(MayaCmds.getAttr('polySphereShape.noNormals'))
 
     def testStaticMeshPolyNormals(self):
@@ -131,7 +131,7 @@ class PolyNormalsTest(unittest.TestCase):
         MayaCmds.AbcImport(self.__files[-1], mode='import')
 
 
-        self.failIf(MayaCmds.listAttr('polyCube1|polyCubeShape').count('noNormals') != 0)
+        self.assertFalse(MayaCmds.listAttr('polyCube1|polyCubeShape').count('noNormals') != 0)
 
         # make sure the normals are the same
         shapeObj = getObjFromName('polyCube1|polyCubeShape')
@@ -191,7 +191,7 @@ class PolyNormalsTest(unittest.TestCase):
 
         # make sure the noNormal attribute is set correctly when the file is
         # loaded
-        self.failIf(MayaCmds.listAttr('polyCube1|polyCubeShape').count('noNormals') != 0)
+        self.assertFalse(MayaCmds.listAttr('polyCube1|polyCubeShape').count('noNormals') != 0)
 
         # make sure the normals are the same
         for time in range(1, 5):

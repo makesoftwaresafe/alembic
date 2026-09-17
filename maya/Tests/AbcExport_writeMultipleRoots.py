@@ -96,5 +96,5 @@ class selectionTest(unittest.TestCase):
         self.failUnless(MayaCmds.objExists("lower"))
         self.failUnless(MayaCmds.objExists("chest"))
 
-        self.failIf(MayaCmds.objExists("robot"))
-        self.failIf(MayaCmds.objExists("robot|body"))
+        self.assertFalse(MayaCmds.objExists("robot"))
+        self.assertFalse(MayaCmds.objExists("robot|body"))

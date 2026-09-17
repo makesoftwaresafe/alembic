@@ -86,13 +86,13 @@ class StripNamespaceTest(unittest.TestCase):
         MayaCmds.namespace(addNamespace='duck', parent='delicious:crispy')
         MayaCmds.namespace(addNamespace='skin', parent='delicious:crispy:duck')
         MayaCmds.AbcImport(self.__files[0], mode='import')
-        self.failIf(len(MayaCmds.ls('delicious:crispy:duck:skin:yum')) != 1)
+        self.assertFalse(len(MayaCmds.ls('delicious:crispy:duck:skin:yum')) != 1)
 
         # all stripped
         MayaCmds.AbcImport(self.__files[1], mode='import')
         MayaCmds.AbcImport(self.__files[2], mode='import')
         MayaCmds.AbcImport(self.__files[3], mode='import')
-        self.failIf(len(MayaCmds.ls('yum*')) != 3)
+        self.assertFalse(len(MayaCmds.ls('yum*')) != 3)
 
         # strip one
         MayaCmds.file(force=True, new=True)
@@ -100,17 +100,17 @@ class StripNamespaceTest(unittest.TestCase):
         MayaCmds.namespace(addNamespace='duck', parent='crispy')
         MayaCmds.namespace(addNamespace='skin', parent='crispy:duck')
         MayaCmds.AbcImport(self.__files[4], mode='import')
-        self.failIf(len(MayaCmds.ls('crispy:duck:skin:yum')) != 1)
+        self.assertFalse(len(MayaCmds.ls('crispy:duck:skin:yum')) != 1)
 
         # strip two
         MayaCmds.file(force=True, new=True)
         MayaCmds.namespace(addNamespace='duck')
         MayaCmds.namespace(addNamespace='skin', parent='duck')
         MayaCmds.AbcImport(self.__files[5], mode='import')
-        self.failIf(len(MayaCmds.ls('duck:skin:yum')) != 1)
+        self.assertFalse(len(MayaCmds.ls('duck:skin:yum')) != 1)
 
         # strip three
         MayaCmds.file(force=True, new=True)
         MayaCmds.namespace(addNamespace='skin')
         MayaCmds.AbcImport(self.__files[6], mode='import')
-        self.failIf(len(MayaCmds.ls('skin:yum')) != 1)
+        self.assertFalse(len(MayaCmds.ls('skin:yum')) != 1)

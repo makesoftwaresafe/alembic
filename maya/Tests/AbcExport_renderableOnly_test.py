@@ -56,4 +56,4 @@ class renderableOnlyTest(unittest.TestCase):
         MayaCmds.AbcExport(j='-renderableOnly -file ' + self.__files[-1])
         MayaCmds.AbcImport(self.__files[-1], m='open')
         self.failUnless(MayaCmds.objExists('potato'))
-        self.failIf(MayaCmds.objExists('hidden'))
+        self.assertFalse(MayaCmds.objExists('hidden'))
