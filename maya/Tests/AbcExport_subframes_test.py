@@ -302,7 +302,7 @@ class subframesTest(unittest.TestCase):
         MayaCmds.AbcExport(j='-fr 1 5 -step 0.5 -wfg -root %s -file %s ' % (
             nodename, self.__files[-1]))
 
-        self.failIf(MayaCmds.AbcImport(self.__files[-1]) != "")
+        self.assertFalse(MayaCmds.AbcImport(self.__files[-1]) != "")
 
         self.__files.append(util.expandFileName('sgst_moblur_noSampleGeo_norange_Test.abc'))
         MayaCmds.AbcExport(j='-step 0.5 -wfg -root %s -file %s' % (

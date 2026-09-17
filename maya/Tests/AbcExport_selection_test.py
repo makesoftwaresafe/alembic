@@ -109,10 +109,10 @@ class selectionTest(unittest.TestCase):
         self.failUnless(MayaCmds.objExists("robot|body|leftArm"))
         self.failUnless(MayaCmds.objExists("robot|lower|bottom"))
 
-        self.failIf(MayaCmds.objExists("robot|body|rightArm"))
-        self.failIf(MayaCmds.objExists("robot|body|chest"))
-        self.failIf(MayaCmds.objExists("robot|lower|rightLeg"))
-        self.failIf(MayaCmds.objExists("robot|lower|leftLeg"))
+        self.assertFalse(MayaCmds.objExists("robot|body|rightArm"))
+        self.assertFalse(MayaCmds.objExists("robot|body|chest"))
+        self.assertFalse(MayaCmds.objExists("robot|lower|rightLeg"))
+        self.assertFalse(MayaCmds.objExists("robot|lower|leftLeg"))
 
         MayaCmds.AbcImport(self.__files[-2], m='open')
         self.failUnless(MayaCmds.objExists("head"))
@@ -121,4 +121,4 @@ class selectionTest(unittest.TestCase):
 
         # we didnt actually select any meshes so there shouldnt
         # be any in the scene
-        self.failIf(MayaCmds.ls(type='mesh'))
+        self.assertFalse(MayaCmds.ls(type='mesh'))

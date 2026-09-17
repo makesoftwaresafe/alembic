@@ -70,9 +70,9 @@ class VisibilityTest(unittest.TestCase):
         MayaCmds.AbcExport(j='-wv -root %s -file %s' % (root, self.__files[-1]))
 
         MayaCmds.AbcImport(self.__files[-1], m='open')
-        self.failIf(MayaCmds.getAttr(group1+'.visibility'))
-        self.failIf(MayaCmds.getAttr(group2+'.visibility'))
-        self.failIf(MayaCmds.getAttr(group5+'.visibility'))
+        self.assertFalse(MayaCmds.getAttr(group1+'.visibility'))
+        self.assertFalse(MayaCmds.getAttr(group2+'.visibility'))
+        self.assertFalse(MayaCmds.getAttr(group5+'.visibility'))
 
         self.failUnless(MayaCmds.getAttr(group1+'|'+poly1+'.visibility'))
         self.failUnless(MayaCmds.getAttr(group4+'|'+poly1+'.visibility'))
@@ -108,9 +108,9 @@ class VisibilityTest(unittest.TestCase):
         MayaCmds.AbcImport(self.__files[-1], mode='open')
 
         MayaCmds.currentTime(1, update = True)
-        self.failIf(MayaCmds.getAttr(group1 + '.visibility'))
-        self.failIf(MayaCmds.getAttr(group2 + '.visibility'))
-        self.failIf(MayaCmds.getAttr(group5 + '.visibility'))
+        self.assertFalse(MayaCmds.getAttr(group1 + '.visibility'))
+        self.assertFalse(MayaCmds.getAttr(group2 + '.visibility'))
+        self.assertFalse(MayaCmds.getAttr(group5 + '.visibility'))
 
         self.failUnless(MayaCmds.getAttr(group1 + '|' + poly1 + '.visibility'))
         self.failUnless(MayaCmds.getAttr(group4 + '|' + poly1 + '.visibility'))
@@ -130,9 +130,9 @@ class VisibilityTest(unittest.TestCase):
         self.failUnless(MayaCmds.getAttr(root + '.visibility'))
 
         MayaCmds.currentTime(4, update = True )
-        self.failIf(MayaCmds.getAttr(group1 + '.visibility'))
-        self.failIf(MayaCmds.getAttr(group2 + '.visibility'))
-        self.failIf(MayaCmds.getAttr(group5 + '.visibility'))
+        self.assertFalse(MayaCmds.getAttr(group1 + '.visibility'))
+        self.assertFalse(MayaCmds.getAttr(group2 + '.visibility'))
+        self.assertFalse(MayaCmds.getAttr(group5 + '.visibility'))
 
         self.failUnless(MayaCmds.getAttr(group1 + '|' + poly1 + '.visibility'))
         self.failUnless(MayaCmds.getAttr(group4 + '|' + poly1 + '.visibility'))

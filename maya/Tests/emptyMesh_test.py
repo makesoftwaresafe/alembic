@@ -62,5 +62,5 @@ class emptyMeshTest(unittest.TestCase):
         MayaCmds.AbcImport(self.__files[-1], m='open')
 
         self.failUnless(MayaCmds.objExists("trans"))
-        self.failIf(MayaCmds.objExists("head"))
+        self.assertFalse(MayaCmds.objExists("head"))
 

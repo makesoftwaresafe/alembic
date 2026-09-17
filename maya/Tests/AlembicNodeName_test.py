@@ -113,4 +113,4 @@ class AbcNodeNameTest(unittest.TestCase):
         ret1 = MayaCmds.AbcImport(self.__files[-1], mode='import')
         self.failUnless(MayaCmds.objExists(ret))
         self.failUnless(MayaCmds.objExists(ret1))
-        self.failIf(ret == ret1)
+        self.assertFalse(ret == ret1)
